@@ -13,7 +13,7 @@ public class Firefly : MonoBehaviour
     Vector3 targetPos;
     void Start()
     {
-        float posX = UnityEngine.Random.Range(-11f, 7f);
+        float posX = UnityEngine.Random.Range(-11f, 7f);  
         float posY = UnityEngine.Random.Range(-4f, 4f);
 
 
