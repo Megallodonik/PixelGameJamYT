@@ -25,7 +25,7 @@ public class Player_Movement : MonoBehaviour
     {
 
         float translation = Input.GetAxis("Horizontal") * Time.deltaTime * MovementSpeed;
-        Debug.Log(Input.GetAxis("Horizontal"));
+        
         transform.Translate(translation, 0, 0);
 
 
@@ -36,7 +36,7 @@ public class Player_Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Jump!");
+           
             Vector2 force = Vector2.up * JumpForce;
             _rb.AddForce(force, ForceMode2D.Impulse);
         }

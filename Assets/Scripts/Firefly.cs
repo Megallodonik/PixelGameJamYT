@@ -29,7 +29,7 @@ public class Firefly : MonoBehaviour
         transform.position = Vector3.Lerp(pos, targetPos, 0.25f * Time.deltaTime);
     }
 
-    async void Move()
+    async UniTask Move()
     {
         
 
@@ -38,7 +38,7 @@ public class Firefly : MonoBehaviour
 
 
         targetPos = new Vector3(posX, posY, 0);
-        Debug.Log(targetPos);
+        
 
         await UniTask.Delay(UnityEngine.Random.Range(1000, 5000)); // 1sec - 5 sec
         Move();
