@@ -10,12 +10,15 @@ public class Firefly : MonoBehaviour
 
     public float MovementSpeed = 1f;
 
+    public float RotationSpeed;
+
     Vector3 targetPos;
     void Start()
     {
         float posX = UnityEngine.Random.Range(-11f, 7f);  
         float posY = UnityEngine.Random.Range(-4f, 4f);
 
+        RotationSpeed = UnityEngine.Random.Range(-4f, 4f);
 
         targetPos = new Vector3(posX, posY, 0);
 
@@ -27,6 +30,10 @@ public class Firefly : MonoBehaviour
     {
         Vector3 pos = transform.position;
         transform.position = Vector3.Lerp(pos, targetPos, 0.25f * Time.deltaTime);
+
+        Quaternion rotation = Quaternion.Euler(0, 0, RotationSpeed * Time.deltaTime);
+
+        transform.rotation = transform.rotation * rotation;
     }
 
     async UniTask Move()
