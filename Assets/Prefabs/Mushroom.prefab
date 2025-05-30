@@ -443,6 +443,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _harvestText: {fileID: 2450273701693024836}
+  Glow: {fileID: 5502692805546283939}
+  GlowingSpeed: 0.1
+  minGlow: 1
+  maxGlow: 2
   _player: {fileID: 0}
 --- !u!212 &5502692806049803876
 SpriteRenderer:

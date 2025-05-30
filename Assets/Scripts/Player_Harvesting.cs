@@ -18,8 +18,10 @@ public class Player_Harvesting : MonoBehaviour
 
     private CancellationToken _cts_harvesting; // токен для отмены задержки перед сбором ресурса, если игрок отпустил клавишу или вышел из коллайдера
     
-    private GameObject _HarvestableObject = null;
+    private GameObject _currentHarvestableObject = null;
 
+
+    bool delayEnd = false;
     void Start()
     {
         
@@ -30,10 +32,11 @@ public class Player_Harvesting : MonoBehaviour
     {
         Mushroom_countText.text = _mushroomCount.ToString();
         Ore_countText.text = _oreCount.ToString();
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) & _canHarvest)
         {
+            
             Debug.Log("E is pressed");
-
+            harvestDelay();
             Harvesting();
 
 
@@ -43,29 +46,48 @@ public class Player_Harvesting : MonoBehaviour
     }
 
 
-
+    private async UniTask harvestDelay()
+    {
+        
+        delayEnd = false;
+        await UniTask.Delay(5000); //5 sec
+        delayEnd = true;
+    }
 
     private async UniTask Harvesting()
     {
-        Debug.Log("Harvesting");
-        
-        if (_canHarvest)
-        {
-            Debug.Log("Harvested");
-            await UniTask.Delay(5000); //5 sec
-            switch (_HarvestableObject.tag)
-            {
-                case "Mushroom":
-                    _mushroomCount++;
-                    break;
-                case "Ore":
-                    _oreCount++;
-                    break;
-            }
 
-            _HarvestableObject.SetActive(false);
+        
+        Debug.Log("Harvesting");
+
+        while (_canHarvest)
+        {
+            GameObject harvestableObj = _currentHarvestableObject;
+            Debug.Log("while _canHarvest");
 
             
+            if (_canHarvest & harvestableObj == _currentHarvestableObject & delayEnd == true)
+            {
+                
+                switch (_currentHarvestableObject.tag)
+                {
+                    case "Mushroom":
+                        Debug.Log("Mushroom");
+                        _mushroomCount++;
+                        _currentHarvestableObject.SetActive(false);
+                        break;
+                    case "Ore":
+                        Debug.Log("Ore");
+                        _oreCount++;
+                        _currentHarvestableObject.SetActive(false);
+                        break;
+                }
+
+                Debug.Log("end of switchcase");
+            }
+
+            await UniTask.Delay(500);
+
         }
     }
 
@@ -85,11 +107,13 @@ public class Player_Harvesting : MonoBehaviour
         {
 
             _canHarvest = true;
-            _HarvestableObject = other.gameObject;
+            _currentHarvestableObject = other.gameObject;
 
 
         }
     }
+
+
 
     public void OnTriggerExit2D(Collider2D other)
     {
@@ -97,7 +121,7 @@ public class Player_Harvesting : MonoBehaviour
         {
             Debug.Log("is not harvestable");
             _canHarvest = false;
-            _HarvestableObject = null;
+            _currentHarvestableObject = null;
            
 
 

@@ -6,5 +6,8 @@ public class Mushroom : Harvestable
 {
     [SerializeField] private GameObject _player;
 
-
+    private void Start()
+    {
+        
+    }
 }
