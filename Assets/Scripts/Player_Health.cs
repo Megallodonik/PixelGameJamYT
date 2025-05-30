@@ -55,11 +55,11 @@ public class Player_Health : MonoBehaviour
 
         await UniTask.Delay(3000); //3sec
         glow = false;
-        unGlowing();
+        unGlowing();  
         unGlow = true;
         await UniTask.Delay(3000);
         unGlow = false;
-        
+         
         light.color = lightColor;
         light.pointLightOuterRadius = lightMinRadius;
        
