@@ -39,7 +39,11 @@ public class Player_Health : MonoBehaviour
     {
         HealthBar.SetActive(true);
         PlayerHealth -= damage;
-        glowOnDamage();
+        if (!glow & !unGlow)
+        {
+            glowOnDamage();
+        }
+        
         if (PlayerHealth <= 0)
         {
             Death();
@@ -55,8 +59,9 @@ public class Player_Health : MonoBehaviour
 
         await UniTask.Delay(3000); //3sec
         glow = false;
-        unGlowing();  
         unGlow = true;
+        unGlowing();  
+        
         await UniTask.Delay(3000);
         unGlow = false;
          
