@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
-public class Firefly : MonoBehaviour
+public class Firefly : Enemy
 {
     [SerializeField] private Rigidbody2D _rb;
 

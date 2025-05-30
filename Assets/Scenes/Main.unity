@@ -6373,7 +6373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &619394801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8012,6 +8012,14 @@ PrefabInstance:
       propertyPath: Mushroom_icon
       value: 
       objectReference: {fileID: 690168511}
+    - target: {fileID: 6630558190326462150, guid: 4ccd5138a1063404da3b615e75f9f655, type: 3}
+      propertyPath: lightMaxRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630558190326462150, guid: 4ccd5138a1063404da3b615e75f9f655, type: 3}
+      propertyPath: DamageGlowSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ccd5138a1063404da3b615e75f9f655, type: 3}
 --- !u!1001 &4491118520187564230
