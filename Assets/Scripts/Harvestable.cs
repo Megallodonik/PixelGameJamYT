@@ -27,6 +27,7 @@ public class Harvestable : MonoBehaviour
     }
     private void OnEnable()
     {
+        light = Glow.GetComponent<Light2D>();
         light.pointLightOuterRadius = minGlowRadius;
         Glow.SetActive(false);
     }

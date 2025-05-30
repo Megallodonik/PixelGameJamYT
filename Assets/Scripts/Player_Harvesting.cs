@@ -9,8 +9,15 @@ using UnityEngine;
 
 public class Player_Harvesting : MonoBehaviour
 {
-    [SerializeField] TMP_Text Mushroom_countText;
-    [SerializeField] TMP_Text Ore_countText;
+    [SerializeField] GameObject Mushroom_count;
+    [SerializeField] GameObject Ore_count;
+
+    [SerializeField] GameObject Mushroom_icon;
+    [SerializeField] GameObject Ore_icon;
+
+
+    private TMP_Text Mushroom_countText;
+    private TMP_Text Ore_countText;
     private int _mushroomCount = 0;
     private int _oreCount = 0;
 
@@ -26,7 +33,8 @@ public class Player_Harvesting : MonoBehaviour
     bool delayEnd = false;
     void Start()
     {
-        
+        Mushroom_countText = Mushroom_count.GetComponent<TMP_Text>();
+        Ore_countText = Ore_count.GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -34,6 +42,7 @@ public class Player_Harvesting : MonoBehaviour
     {
         Mushroom_countText.text = _mushroomCount.ToString();
         Ore_countText.text = _oreCount.ToString();
+
         if (Input.GetKeyDown(KeyCode.E) & _canHarvest)
         {
             
@@ -60,7 +69,7 @@ public class Player_Harvesting : MonoBehaviour
         try
         {
             Debug.Log("try delaay");
-            await UniTask.Delay(5000, cancellationToken: _cts.Token); //5 sec
+            await UniTask.Delay(3000, cancellationToken: _cts.Token); //3 sec
             Debug.Log("delayend");
             delayEnd = true;
 
@@ -97,13 +106,15 @@ public class Player_Harvesting : MonoBehaviour
                 {
                     case "Mushroom":
                         Debug.Log("Mushroom");
-                        _mushroomCount++;
+                        textDisapearing(harvestableObj.tag);
+                         _mushroomCount++;
 
                         harvestableObj.SetActive(false);
 
                         break;
                     case "Ore":
                         Debug.Log("Ore");
+                        textDisapearing(harvestableObj.tag);
                         _oreCount++;
                         harvestableObj.SetActive(false);
                         break;
@@ -121,7 +132,34 @@ public class Player_Harvesting : MonoBehaviour
 
     }
 
+    private async UniTask textDisapearing(string harvestable)
+    {
+        switch (harvestable)
+        {
+            case "Mushroom":
+                Debug.Log("Mushroom");
+                Mushroom_count.SetActive(true);
+                Mushroom_icon.SetActive(true);
 
+                await UniTask.Delay(3000);
+
+                Mushroom_icon.SetActive(false);
+                Mushroom_count.SetActive(false);
+                break;
+            case "Ore":
+                Debug.Log("Ore");
+                Ore_count.SetActive(true);
+                Ore_icon.SetActive(true);
+
+                await UniTask.Delay(3000);
+
+                Ore_icon.SetActive(false);
+                Ore_count.SetActive(false);
+
+                break;
+        }
+
+    }
     public async UniTask OnTriggerStay2D(Collider2D other)
     {
         Debug.Log("trigger stay");
