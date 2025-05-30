@@ -15,6 +15,7 @@ public class Player_Health : MonoBehaviour
 
     private Light2D light;
     private bool glow = false;
+    private bool unGlow = false;
     private float lightMinRadius;
     public float lightMaxRadius = 5f;
     private Color lightColor;
@@ -53,11 +54,26 @@ public class Player_Health : MonoBehaviour
         light.color = Color.red;
 
         await UniTask.Delay(3000); //3sec
-
         glow = false;
+        unGlowing();
+        unGlow = true;
+        await UniTask.Delay(3000);
+        unGlow = false;
+        
         light.color = lightColor;
         light.pointLightOuterRadius = lightMinRadius;
        
+
+    }
+
+    public async UniTask unGlowing()
+    {
+        while (unGlow)
+        {
+            light.pointLightOuterRadius = Mathf.Lerp(light.pointLightOuterRadius, lightMinRadius, DamageGlowSpeed * Time.deltaTime);
+            await UniTask.WaitForFixedUpdate();
+        }
+        
 
     }
 
@@ -71,9 +87,12 @@ public class Player_Health : MonoBehaviour
     {
         healthBarText.text = PlayerHealth.ToString();
 
+
+
         if (glow)
         {
-            light.pointLightOuterRadius = Mathf.Lerp(light.pointLightOuterRadius, lightMaxRadius, DamageGlowSpeed);
+            light.pointLightOuterRadius = Mathf.Lerp(light.pointLightOuterRadius, lightMaxRadius, DamageGlowSpeed * Time.deltaTime);
         }
+        
     }
 }
