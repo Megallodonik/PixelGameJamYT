@@ -11,44 +11,56 @@ public class LightSwitch : MonoBehaviour
     [SerializeField] Color OffColor;
     private Light2D _light;
     private Color OnColor;
-    public List<Light2D> LightComponent_List;
+    //public List<Light2D> LightComponent_List;
 
     private bool canActivate = true;
     void Start()
     {
-        for (int i = 0; i < FloodLight_List.Count; i++)
-        {
-            LightComponent_List.Add(FloodLight_List[i].GetComponent<Light2D>());
+        //for (int i = 0; i < FloodLight_List.Count; i++)
+        //{
+        //    LightComponent_List.Add(FloodLight_List[i].GetComponent<Light2D>());
 
-        }
+        //}
         _light = this.GetComponent<Light2D>();
         OnColor = _light.color;
     }
 
-    public async UniTask TurnOnLight()
+    public async UniTask TurnOfLight()
     {
         Debug.Log("switchLight");
         Debug.Log(canActivate);
         canActivate = false;
         EnableText.SetActive(false);
         _light.color = OffColor;
-        for (int i = 0; i < LightComponent_List.Count; i++)
+        //for (int i = 0; i < LightComponent_List.Count; i++)
+        //{
+        //    LightComponent_List[i].enabled = !LightComponent_List[i].enabled;
+        //    await UniTask.Delay(1000);
+        //}
+
+        for (int i = 0; i < FloodLight_List.Count; i++)
         {
-            LightComponent_List[i].enabled = !LightComponent_List[i].enabled;
+            FloodLight_List[i].SetActive(false);
             await UniTask.Delay(1000);
         }
         await UniTask.Delay(6000);
-        TurnOfLight();
+        TurnOnLight();
         
     }
-    public async UniTask TurnOfLight()
+    public async UniTask TurnOnLight()
     {
 
-        for (int i = 0; i < LightComponent_List.Count; i++)
+        //for (int i = 0; i < LightComponent_List.Count; i++)
+        //{
+        //    LightComponent_List[i].enabled = !LightComponent_List[i].enabled;
+        //    await UniTask.Delay(1000);
+        //}
+        for (int i = 0; i < FloodLight_List.Count; i++)
         {
-            LightComponent_List[i].enabled = !LightComponent_List[i].enabled;
+            FloodLight_List[i].SetActive(true);
             await UniTask.Delay(1000);
         }
+
         canActivate = true;
         _light.color = OnColor;
     }
@@ -79,7 +91,7 @@ public class LightSwitch : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.E) && canActivate)
             {
-                TurnOnLight();
+                TurnOfLight();
             }
         }
 

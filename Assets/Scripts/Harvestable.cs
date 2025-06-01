@@ -12,7 +12,7 @@ public class Harvestable : MonoBehaviour
 {
     [SerializeField] private GameObject _harvestText;
     [SerializeField] protected GameObject Glow;
-
+    public int YieldEmount;
     public float GlowingSpeed = 0.1f;
     public float minGlowRadius = 0.84f;
     public float maxGlowRadius = 5f;

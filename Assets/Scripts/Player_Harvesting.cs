@@ -21,7 +21,7 @@ public class Player_Harvesting : MonoBehaviour
     private int _mushroomCount = 0;
     private int _oreCount = 0;
 
-    private bool _canHarvest = false;
+    private bool _canHarvest = true;
 
     private CancellationToken _cts_harvesting; // токен для отмены задержки перед сбором ресурса, если игрок отпустил клавишу или вышел из коллайдера
     
@@ -43,17 +43,7 @@ public class Player_Harvesting : MonoBehaviour
         Mushroom_countText.text = _mushroomCount.ToString();
         Ore_countText.text = _oreCount.ToString();
 
-        if (Input.GetKeyDown(KeyCode.E) & _canHarvest)
-        {
-            
-            Debug.Log("E is pressed");
-            
-            harvestDelay();
-            Harvesting();
 
-
-
-        }
 
     }
 
@@ -64,8 +54,8 @@ public class Player_Harvesting : MonoBehaviour
         _cts = new CancellationTokenSource();
 
         delayEnd = false;
+        _canHarvest = false;
 
-        
         try
         {
             Debug.Log("try delaay");
@@ -78,6 +68,7 @@ public class Player_Harvesting : MonoBehaviour
         catch (OperationCanceledException)
         {
             Debug.Log("cancelled");
+            _canHarvest = true;
             delayEnd = false;
         }
 
@@ -88,47 +79,33 @@ public class Player_Harvesting : MonoBehaviour
 
         
         Debug.Log("Harvesting");
-        
+        GameObject harvestableObj = _currentHarvestableObject;
         _currentHarvestableObject.GetComponent<Harvestable>().Glowing();
-
-
-        while (_canHarvest)
+        await UniTask.WaitUntil(() => delayEnd);
+        if (harvestableObj == _currentHarvestableObject)
         {
-            Debug.Log(delayEnd);
-            GameObject harvestableObj = _currentHarvestableObject;
-            Debug.Log("while _canHarvest");
-
-            
-            if (_canHarvest & harvestableObj == _currentHarvestableObject & delayEnd == true)
+            delayEnd = false;
+            switch (harvestableObj.tag)
             {
-                
-                switch (harvestableObj.tag)
-                {
-                    case "Mushroom":
-                        Debug.Log("Mushroom");
-                        textDisapearing(harvestableObj.tag);
-                         _mushroomCount++;
+                case "Mushroom":
+                    Debug.Log("Mushroom");
+                    textDisapearing(harvestableObj.tag);
+                    _mushroomCount += harvestableObj.GetComponent<Harvestable>().YieldEmount;
 
-                        harvestableObj.SetActive(false);
-
-                        break;
-                    case "Ore":
-                        Debug.Log("Ore");
-                        textDisapearing(harvestableObj.tag);
-                        _oreCount++;
-                        harvestableObj.SetActive(false);
-                        break;
-                }
-
-                Debug.Log("end of switchcase");
+                    harvestableObj.SetActive(false);
+                    _canHarvest = true;
+                    break;
+                case "Ore":
+                    Debug.Log("Ore");
+                    textDisapearing(harvestableObj.tag);
+                    _oreCount += harvestableObj.GetComponent<Harvestable>().YieldEmount;
+                    harvestableObj.SetActive(false);
+                    _canHarvest = true;
+                    break;
             }
-            
 
-            await UniTask.Delay(500);
-
+            Debug.Log("end of switchcase");
         }
-        
-        
 
     }
 
@@ -160,44 +137,35 @@ public class Player_Harvesting : MonoBehaviour
         }
 
     }
-    public async UniTask OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         Debug.Log("trigger stay");
 
-
-    }
-
-
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-
-        Debug.Log("trigger enter");
-        if (other.CompareTag("Mushroom") || other.CompareTag("Ore"))
+        if (Input.GetKeyDown(KeyCode.E) && _canHarvest && (other.CompareTag("Mushroom") || other.CompareTag("Ore")))
         {
+
+            Debug.Log("E is pressed");
             _currentHarvestableObject = null;
-            _canHarvest = true;
+            
             _currentHarvestableObject = other.gameObject;
+            harvestDelay();
+            Harvesting();
+
 
 
         }
-    }
 
+    }
     public void StopHarvestDelay()
     {
         _cts.Cancel(); 
     }
-
     public void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Mushroom") || other.CompareTag("Ore"))
         {
-            Debug.Log("is not harvestable");
-
-            _canHarvest = false;
-            _currentHarvestableObject.GetComponent<Harvestable>().stopGlowing();
             StopHarvestDelay();
-
-
+            _currentHarvestableObject.GetComponent<Harvestable>().stopGlowing();
 
         }
     }

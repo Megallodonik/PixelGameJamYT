@@ -338,7 +338,7 @@ MonoBehaviour:
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
+  m_LightOrder: 3
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
@@ -444,6 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _harvestText: {fileID: 2450273701693024836}
   Glow: {fileID: 5502692805546283939}
+  YieldEmount: 1
   GlowingSpeed: 1
   minGlowRadius: 0.84
   maxGlowRadius: 5
