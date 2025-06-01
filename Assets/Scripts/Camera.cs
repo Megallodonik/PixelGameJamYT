@@ -5,17 +5,48 @@ using UnityEngine;
 public class Camera : MonoBehaviour
 {
     [SerializeField] private Transform _playerPosition;
-
+    private int ScreenLength = 20;
+    //public cameraPositionsNode[] CameraPositions;
+    //private int currentCameraPosition = 0;
     // Update is called once per frame
-    void Update()
+
+    private void Start()
     {
-        if (_playerPosition.position.x > 12.6f)
+
+    }
+    void FixedUpdate()
+    {
+        //if (_playerPosition.position.x > CameraPositions[currentCameraPosition].CameraPosition.position.x + ScreenLength / 2)
+        //{
+        //    currentCameraPosition++;
+        //    transform.position = CameraPositions[currentCameraPosition].CameraPosition.position;
+
+        //}
+        //if (_playerPosition.position.x < CameraPositions[currentCameraPosition].CameraPosition.position.x - ScreenLength / 2)
+        //{
+        //    currentCameraPosition -= 1;
+        //    transform.position = CameraPositions[currentCameraPosition].CameraPosition.position;
+
+        //}
+
+        if (_playerPosition.position.x > transform.position.x + ScreenLength / 2)
         {
-            transform.position = new Vector3(20, 0, -10);
+            transform.position = new Vector3(transform.position.x + ScreenLength, transform.position.y, transform.position.z);
+
         }
-        if (_playerPosition.position.x < 12.6f)
+        if (_playerPosition.position.x < transform.position.x - ScreenLength / 2)
         {
-            transform.position = new Vector3(0, 0, -10);
+            transform.position = new Vector3(transform.position.x - ScreenLength, transform.position.y, transform.position.z);
+
         }
+
+
     }
 }
+
+//[System.Serializable]
+//public class cameraPositionsNode
+//{
+//    public Transform CameraPosition;
+    
+//}
