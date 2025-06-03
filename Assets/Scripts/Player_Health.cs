@@ -10,8 +10,11 @@ public class Player_Health : MonoBehaviour
 {
     public int PlayerHealth = 5;
 
+    [SerializeField] Transform DeathPosition;
     [SerializeField] GameObject HealthBar;
     [SerializeField] GameObject LightObj;
+
+    private Player_Harvesting _playerHarvesting;
 
     private Light2D light;
     private bool glow = false;
@@ -27,6 +30,7 @@ public class Player_Health : MonoBehaviour
     private TMP_Text healthBarText;
     void Start()
     {
+        _playerHarvesting = GetComponent<Player_Harvesting>();
         light = LightObj.GetComponent<Light2D>();
         lightMinRadius = light.pointLightOuterRadius;
         lightColor = light.color;
@@ -121,7 +125,12 @@ public class Player_Health : MonoBehaviour
     }
     public void Death()
     {
+        transform.position = DeathPosition.position;
+        PlayerHealth = 1;
 
+        
+        _playerHarvesting._mushroomCount -= 5;
+        _playerHarvesting._oreCount -= 5;
     }
 
     // Update is called once per frame

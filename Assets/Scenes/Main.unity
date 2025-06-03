@@ -13039,6 +13039,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4491118520141052965, guid: 11c3dfcc2b2af1843a7b05da874c0e63, type: 3}
   m_PrefabInstance: {fileID: 1239070658}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1591058970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1591058971}
+  m_Layer: 0
+  m_Name: DeathPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1591058971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591058970}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 28.5, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1603608409
 GameObject:
   m_ObjectHideFlags: 0
@@ -14275,6 +14306,10 @@ PrefabInstance:
       propertyPath: _mushroomCount
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6630558190326462150, guid: 4ccd5138a1063404da3b615e75f9f655, type: 3}
+      propertyPath: DeathPosition
+      value: 
+      objectReference: {fileID: 1591058971}
     - target: {fileID: 6630558190326462150, guid: 4ccd5138a1063404da3b615e75f9f655, type: 3}
       propertyPath: lightMaxRadius
       value: 5

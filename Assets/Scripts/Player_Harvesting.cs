@@ -43,8 +43,14 @@ public class Player_Harvesting : MonoBehaviour
         Mushroom_countText.text = _mushroomCount.ToString();
         Ore_countText.text = _oreCount.ToString();
 
-
-
+        if (_mushroomCount < 0)
+        {
+            _mushroomCount = 0;
+        }
+        if (_oreCount < 0)
+        {
+            _oreCount = 0;
+        }
     }
 
 
