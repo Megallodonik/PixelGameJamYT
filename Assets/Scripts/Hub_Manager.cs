@@ -77,6 +77,7 @@ public class Hub_Manager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("Player"))
         {
+            UpgradeSwitch();
 
         }
     }

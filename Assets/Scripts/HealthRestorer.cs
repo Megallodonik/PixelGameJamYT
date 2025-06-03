@@ -13,24 +13,26 @@ public class HealthRestorer : MonoBehaviour
     public int RestorationValue = 1;
     private bool glow = false;
     private Light2D light;
-    private float lightMaxRadius;
+    public float lightMaxRadius;
     private float lightMinRadius;
-    public int GlowSpeed = 1;
+    public float GlowSpeed = 1f;
     void Start()
     {
-        
+
     }
     private void OnEnable()
     {
         light = GetComponent<Light2D>();
         lightMinRadius = light.pointLightOuterRadius;
         player_Health = Player.GetComponent<Player_Health>();
+        glowDelay();
         glowing();
     }
     private async UniTask glowDelay()
     {
         glow = true;
         await UniTask.Delay(3000);
+        glow = false;
     }
     private async UniTask glowing()
     {
@@ -47,6 +49,7 @@ public class HealthRestorer : MonoBehaviour
         while (glow)
         {
             light.pointLightOuterRadius = Mathf.Lerp(light.pointLightOuterRadius, lightMinRadius, GlowSpeed * Time.deltaTime);
+            
             await UniTask.WaitForFixedUpdate();
         }
 
