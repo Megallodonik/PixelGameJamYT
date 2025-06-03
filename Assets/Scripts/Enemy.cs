@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log("Damage");
             player_Health = player.GetComponent<Player_Health>();
-            player_Health.PlayerHpChange(damage);
+            player_Health.PlayerHpChange(damage, Player_Health.HP_ChangeTypes.damage);
             invulnerabilityFrames();
             
         }

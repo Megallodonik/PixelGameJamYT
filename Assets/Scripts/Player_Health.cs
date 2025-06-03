@@ -20,6 +20,7 @@ public class Player_Health : MonoBehaviour
     public float lightMaxRadius = 5f;
     private Color lightColor;
 
+    public int MaxPlayerHealth = 5;
 
     public float DamageGlowSpeed = 1f;
 
@@ -35,13 +36,26 @@ public class Player_Health : MonoBehaviour
         healthBarText = HealthBar.GetComponent<TMP_Text>();
     }
 
-    public async UniTask PlayerHpChange(int damage)
+    public async UniTask PlayerHpChange(int damage, HP_ChangeTypes type)
     {
         HealthBar.SetActive(true);
-        PlayerHealth -= damage;
+        switch (type)
+        {
+            case HP_ChangeTypes.damage:
+                PlayerHealth -= damage;
+                break;
+            case HP_ChangeTypes.restoration:
+                if (PlayerHealth < MaxPlayerHealth)
+                {
+                    PlayerHealth += damage;
+                }
+                
+                break;
+        }
+        
         if (!glow & !unGlow)
         {
-            glowOnDamage();
+            glowOnDamage(type);
         }
         
         if (PlayerHealth <= 0)
@@ -52,10 +66,25 @@ public class Player_Health : MonoBehaviour
         HealthBar.SetActive(false);
     }
 
-    private async UniTask glowOnDamage()
+
+   public enum HP_ChangeTypes
+    {
+        damage,
+        restoration
+    }
+    private async UniTask glowOnDamage(HP_ChangeTypes type)
     {
         glow = true;
-        light.color = Color.red;
+        switch (type)
+        {
+            case HP_ChangeTypes.damage:
+                light.color = Color.red;
+                break;
+            case HP_ChangeTypes.restoration:
+                light.color = Color.green;
+                break;
+        }
+        
 
         await UniTask.Delay(3000); //3sec
         glow = false;
