@@ -115,27 +115,109 @@ public class Player_Harvesting : MonoBehaviour
         {
             case "Mushroom":
                 Debug.Log("Mushroom");
-                Mushroom_count.SetActive(true);
-                Mushroom_icon.SetActive(true);
 
-                await UniTask.Delay(3000);
 
-                Mushroom_icon.SetActive(false);
-                Mushroom_count.SetActive(false);
+                HarvestableText(TextActions.Appear, Harvestables.Mushroom, 3000);
                 break;
             case "Ore":
                 Debug.Log("Ore");
-                Ore_count.SetActive(true);
-                Ore_icon.SetActive(true);
-
-                await UniTask.Delay(3000);
-
-                Ore_icon.SetActive(false);
-                Ore_count.SetActive(false);
+                HarvestableText(TextActions.Appear, Harvestables.Ore, 3000);
 
                 break;
+            case "Both":
+                Debug.Log("both");
+                HarvestableText(TextActions.Appear, Harvestables.Both, 3000);
+
+                break ;
         }
 
+    }
+    public enum Harvestables
+    {
+        Mushroom,
+        Ore,
+        Both,
+    }
+    public enum TextActions
+    {
+        Appear,
+        Disappear,
+    }
+    public async UniTask HarvestableText(TextActions action, Harvestables harvestable, int delay) // if delay == 0 text will not disappear automatically
+    {
+        switch (harvestable)
+        {
+            case Harvestables.Ore:
+                switch (action)
+                {
+                    case TextActions.Appear:
+
+                        Ore_count.SetActive(true);
+                        Ore_icon.SetActive(true);
+                        if (delay != 0)
+                        {
+                            await UniTask.Delay(delay);
+                            HarvestableText(TextActions.Disappear, harvestable, 0);
+                        }
+                        break;
+                    case TextActions.Disappear:
+                        Ore_icon.SetActive(false);
+                        Ore_count.SetActive(false);
+
+                        break;
+                }
+                break;
+            case Harvestables.Mushroom:
+                switch (action)
+                {
+                    case TextActions.Appear:
+
+
+                        Mushroom_count.SetActive(true);
+                        Mushroom_icon.SetActive(true);
+                        if (delay != 0)
+                        {
+                            await UniTask.Delay(delay);
+                            HarvestableText(TextActions.Disappear, harvestable, 0);
+                        }
+                        break;
+                    case TextActions.Disappear:
+
+
+                        Mushroom_icon.SetActive(false);
+                        Mushroom_count.SetActive(false);
+
+                        break;
+                }
+                break;
+            case Harvestables.Both:
+                switch (action)
+                {
+                    case TextActions.Appear:
+
+                        Ore_count.SetActive(true);
+                        Ore_icon.SetActive(true);
+
+                        Mushroom_count.SetActive(true);
+                        Mushroom_icon.SetActive(true);
+                        if (delay != 0)
+                        {
+                            await UniTask.Delay(delay);
+                            HarvestableText(TextActions.Disappear, harvestable, 0);
+                        }
+                        break;
+                    case TextActions.Disappear:
+                        Ore_icon.SetActive(false);
+                        Ore_count.SetActive(false);
+
+                        Mushroom_icon.SetActive(false);
+                        Mushroom_count.SetActive(false);
+
+                        break;
+                }
+                break;
+
+        }
     }
     private void OnTriggerStay2D(Collider2D other)
     {
