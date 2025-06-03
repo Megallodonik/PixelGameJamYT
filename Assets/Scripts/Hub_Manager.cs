@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,9 @@ public class Hub_Manager : MonoBehaviour
     [SerializeField] TMP_Text MushroomPriceText;
     [SerializeField] TMP_Text DescriptionText;
     [SerializeField] GameObject HealthRestoration;
+    [SerializeField] GameObject SecondScreenWall;
+    [SerializeField] CameraController Camera;
+    [SerializeField] GameObject SecondScreenArrow;
     private Player_Harvesting _playerHarvesting;
 
     private int currentPriceNode = 0;
@@ -59,11 +63,21 @@ public class Hub_Manager : MonoBehaviour
         {
             case PricesNode.Upgrades.HealthRestoration:
                 _healthRestorationUpgrade();
-                break; 
+                break;
+            case PricesNode.Upgrades.SecondScreen:
+                _secondScreenUpgrade();
+                break;
         }
 
     }
-
+    private async UniTask _secondScreenUpgrade()
+    {
+        
+        Camera.SecondScreenCameraMove();
+        await UniTask.Delay(2000);
+        SecondScreenWall.SetActive(false);
+        SecondScreenArrow.SetActive(true);
+    }
     private void _healthRestorationUpgrade()
     {
         HealthRestoration.SetActive(true);
@@ -105,7 +119,7 @@ public class PricesNode
     public enum Upgrades
     {
         HealthRestoration = 0,
-        SomeSecondUpgrade = 1,
+        SecondScreen = 1,
         SomeThirdUpgrade = 2,
     }
 }
