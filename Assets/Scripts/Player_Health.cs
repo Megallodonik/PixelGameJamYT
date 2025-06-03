@@ -13,9 +13,15 @@ public class Player_Health : MonoBehaviour
     [SerializeField] Transform DeathPosition;
     [SerializeField] GameObject HealthBar;
     [SerializeField] GameObject LightObj;
+    [SerializeField] GameObject DeathTextObject;
+    [SerializeField] Color EndColor;
 
+    private Color StartColor;
+    public int ColorChangeSpeed;
+    private TMP_Text deathText;
     private Player_Harvesting _playerHarvesting;
 
+    private bool deathTextDelayEnd = false;
     private Light2D light;
     private bool glow = false;
     private bool unGlow = false;
@@ -30,6 +36,8 @@ public class Player_Health : MonoBehaviour
     private TMP_Text healthBarText;
     void Start()
     {
+        deathText = DeathTextObject.GetComponent<TMP_Text>();
+        StartColor = deathText.color;
         _playerHarvesting = GetComponent<Player_Harvesting>();
         light = LightObj.GetComponent<Light2D>();
         lightMinRadius = light.pointLightOuterRadius;
@@ -123,8 +131,31 @@ public class Player_Health : MonoBehaviour
             await UniTask.WaitForFixedUpdate();
         }
     }
+    
+    private async UniTask deathTextDelay()
+    {
+        
+        await UniTask.Delay(3000); //3sec
+        deathTextDelayEnd = true;
+    }
+    private async UniTask deathTextDisappearing()
+    {
+        while (!deathTextDelayEnd)
+        {
+            deathText.color = Color.Lerp(deathText.color, EndColor, ColorChangeSpeed * Time.deltaTime);
+            await UniTask.WaitForFixedUpdate();
+            
+        }
+        DeathTextObject.SetActive(false);
+        deathText.color = StartColor;
+        deathTextDelayEnd = false;
+
+    }
     public void Death()
     {
+        DeathTextObject.SetActive(true);
+        deathTextDelay();
+        deathTextDisappearing();
         transform.position = DeathPosition.position;
         PlayerHealth = 1;
 
