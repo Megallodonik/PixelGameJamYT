@@ -75,6 +75,7 @@ public class Player_Health : MonoBehaviour
     private async UniTask glowOnDamage(HP_ChangeTypes type)
     {
         glow = true;
+        Glowing();
         switch (type)
         {
             case HP_ChangeTypes.damage:
@@ -100,7 +101,7 @@ public class Player_Health : MonoBehaviour
 
     }
 
-    public async UniTask unGlowing()
+    private async UniTask unGlowing()
     {
         while (unGlow)
         {
@@ -110,7 +111,14 @@ public class Player_Health : MonoBehaviour
         
 
     }
-
+    private async UniTask Glowing()
+    {
+        while (glow)
+        {
+            light.pointLightOuterRadius = Mathf.Lerp(light.pointLightOuterRadius, lightMaxRadius, DamageGlowSpeed * Time.deltaTime);
+            await UniTask.WaitForFixedUpdate();
+        }
+    }
     public void Death()
     {
 
@@ -123,10 +131,7 @@ public class Player_Health : MonoBehaviour
 
 
 
-        if (glow)
-        {
-            light.pointLightOuterRadius = Mathf.Lerp(light.pointLightOuterRadius, lightMaxRadius, DamageGlowSpeed * Time.deltaTime);
-        }
+
         
     }
 }

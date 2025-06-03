@@ -12325,14 +12325,18 @@ MonoBehaviour:
   OrePriceText: {fileID: 1396761431}
   MushroomPriceText: {fileID: 1192664171}
   Prices:
-  - priceOre: 4
-    priceMushroom: 4
   - priceOre: 10
     priceMushroom: 10
-  - priceOre: 19
-    priceMushroom: 19
-  - priceOre: 1241
-    priceMushroom: 13515
+    UpgradeName: HealthRestore
+  - priceOre: 15
+    priceMushroom: 15
+    UpgradeName: 
+  - priceOre: 20
+    priceMushroom: 20
+    UpgradeName: 
+  - priceOre: 30
+    priceMushroom: 30
+    UpgradeName: 
 --- !u!114 &1297101669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13799,9 +13803,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1126867466}
     - target: {fileID: 5720727218064900411, guid: 4ccd5138a1063404da3b615e75f9f655, type: 3}
+      propertyPath: _oreCount
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5720727218064900411, guid: 4ccd5138a1063404da3b615e75f9f655, type: 3}
       propertyPath: Mushroom_icon
       value: 
       objectReference: {fileID: 690168511}
+    - target: {fileID: 5720727218064900411, guid: 4ccd5138a1063404da3b615e75f9f655, type: 3}
+      propertyPath: _mushroomCount
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6630558190326462150, guid: 4ccd5138a1063404da3b615e75f9f655, type: 3}
       propertyPath: lightMaxRadius
       value: 5

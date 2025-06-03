@@ -18,8 +18,8 @@ public class Player_Harvesting : MonoBehaviour
 
     private TMP_Text Mushroom_countText;
     private TMP_Text Ore_countText;
-    private int _mushroomCount = 0;
-    private int _oreCount = 0;
+    public int _mushroomCount = 0;
+    public int _oreCount = 0;
 
     private bool _canHarvest = true;
 
