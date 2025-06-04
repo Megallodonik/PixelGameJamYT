@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Harvestable_Spawn : MonoBehaviour
 {
-    [SerializeField] List<GameObject> Ore_List;
-    [SerializeField] List<GameObject> Mushroom_List;
+    [SerializeField] Screens[] ScreenNode;
     void Start()
     {
         Spawn();
@@ -13,21 +12,24 @@ public class Harvestable_Spawn : MonoBehaviour
     public void Spawn()
     {
 
-
-
-        for (int i = 0; i < 5; i++) 
+        for (int nodei = 0; nodei < ScreenNode.Length; nodei++)
         {
-            int oreIndex = UnityEngine.Random.Range(0, Ore_List.Count);
-            Ore_List[oreIndex].SetActive(true);
-
-            int mushroomIndex = UnityEngine.Random.Range(0, Mushroom_List.Count);
-            Mushroom_List[mushroomIndex].SetActive(true);
+           
+            for (int harvestablei = 0; harvestablei <= ScreenNode[nodei].HarvestablesAmount; harvestablei++)
+            {
+                
+                int mushroomi = UnityEngine.Random.Range(0, ScreenNode[nodei].Ore_List.Count - 1);
+                
+                ScreenNode[nodei].Mushroom_List[mushroomi].SetActive(true);
+            }
+            for (int harvestablei = 0; harvestablei <= ScreenNode[nodei].HarvestablesAmount; harvestablei++)
+            {
+                int orei = UnityEngine.Random.Range(0, ScreenNode[nodei].Ore_List.Count - 1);
+                
+                ScreenNode[nodei].Ore_List[orei].SetActive(true);
+                
+            }
         }
-
-
-
-
-
     }
 
     
@@ -37,4 +39,12 @@ public class Harvestable_Spawn : MonoBehaviour
     {
         
     }
+}
+
+[System.Serializable]
+public class Screens
+{
+    public int HarvestablesAmount;
+    public List<GameObject> Ore_List;
+    public  List<GameObject> Mushroom_List;
 }

@@ -45,7 +45,7 @@ public class CameraController : MonoBehaviour
         CameraMove();
         
 
-        await UniTask.Delay(3000);
+        await UniTask.Delay(5000);
 
         delayEnd = true;
         isCameraMoving = false;
