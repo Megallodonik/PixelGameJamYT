@@ -6,6 +6,7 @@ using UnityEngine;
 public class FloodLight : Enemy
 {
     private Collider2D collider;
+    public int colliderDelayValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class FloodLight : Enemy
     }
     private async UniTask colliderDelay()
     {
-        await UniTask.Delay(800); // 0.8sec
+        await UniTask.Delay(colliderDelayValue); // 0.8sec
         collider.enabled = true;
     }
 }
