@@ -5,15 +5,20 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class Player_Health : MonoBehaviour
 {
     public int PlayerHealth = 5;
 
     [SerializeField] Transform DeathPosition;
-    [SerializeField] GameObject HealthBar;
+    [SerializeField] public GameObject HealthBar;
     [SerializeField] GameObject LightObj;
     [SerializeField] GameObject DeathTextObject;
+    [SerializeField] Image DeathMushroomImage;
+    [SerializeField] TMP_Text DeathMushroomText;
+    [SerializeField] Image DeathOreImage;
+    [SerializeField] TMP_Text DeathOreText;
     [SerializeField] Color EndColor;
 
     private Color StartColor;
@@ -143,11 +148,20 @@ public class Player_Health : MonoBehaviour
         while (!deathTextDelayEnd)
         {
             deathText.color = Color.Lerp(deathText.color, EndColor, ColorChangeSpeed * Time.deltaTime);
+            DeathMushroomImage.color = Color.Lerp(DeathMushroomImage.color, EndColor, ColorChangeSpeed * Time.deltaTime);
+            DeathMushroomText.color = Color.Lerp(DeathMushroomText.color, EndColor, ColorChangeSpeed * Time.deltaTime);
+            DeathOreImage.color = Color.Lerp(DeathOreImage.color, EndColor, ColorChangeSpeed * Time.deltaTime);
+            DeathOreText.color = Color.Lerp(DeathOreText.color, EndColor, ColorChangeSpeed * Time.deltaTime);
+
             await UniTask.WaitForFixedUpdate();
             
         }
         DeathTextObject.SetActive(false);
         deathText.color = StartColor;
+        DeathMushroomImage.color = StartColor;
+        DeathMushroomText.color = StartColor;
+        DeathOreImage.color = StartColor;
+        DeathOreText.color = StartColor;
         deathTextDelayEnd = false;
 
     }
@@ -157,7 +171,7 @@ public class Player_Health : MonoBehaviour
         deathTextDelay();
         deathTextDisappearing();
         transform.position = DeathPosition.position;
-        PlayerHealth = 1;
+        PlayerHealth = MaxPlayerHealth;
 
         
         _playerHarvesting._mushroomCount -= 5;
