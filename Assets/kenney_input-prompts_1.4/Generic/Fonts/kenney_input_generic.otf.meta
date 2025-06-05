@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: e614831011b68b84fbf06d0bb2370638
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Kenney Input Generic
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 71705f828af480b4187deff7608fb775, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 12ef19571cef9624491f018fcad3fdaa
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Kenney Input Nintendo Gamecube
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 01170e3d247584f4e88842fd747acf96, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

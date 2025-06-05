@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 4a18926c4cdb36d4f9ac892573bf6b0b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Kenney Input Nintendo Wii
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 674a872141453614499496e4a4fc1060, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8df4f28d155bc984fb58ada51a7faf56
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Kenney Input Nintendo Switch 2
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 779934ae5efd1724fb715d592911a4c6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
