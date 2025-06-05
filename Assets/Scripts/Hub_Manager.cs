@@ -18,6 +18,7 @@ public class Hub_Manager : MonoBehaviour
     [SerializeField] GameObject SecondScreenArrow;
     [SerializeField] GameObject ThirdScreenArrow;
     private Player_Harvesting _playerHarvesting;
+    private bool canUpgrade = true;
 
     private int currentPriceNode = 0;
 
@@ -47,6 +48,8 @@ public class Hub_Manager : MonoBehaviour
     {
         if (_playerHarvesting._mushroomCount >= Prices[currentPriceNode].priceMushroom && _playerHarvesting._oreCount >= Prices[currentPriceNode].priceOre)
         {
+            canUpgrade = false;
+            UpgradeDelay();
             UpgradeActivation(Prices[currentPriceNode].UpgradeName);
             _playerHarvesting._mushroomCount -= Prices[currentPriceNode].priceMushroom;
             _playerHarvesting._oreCount -= Prices[currentPriceNode].priceOre;
@@ -57,9 +60,13 @@ public class Hub_Manager : MonoBehaviour
             OrePriceText.text = Prices[currentPriceNode].priceOre.ToString();
             MushroomPriceText.text = Prices[currentPriceNode].priceMushroom.ToString();
         }
-
+        
     }
-
+    private async UniTask UpgradeDelay()
+    {
+        await UniTask.Delay(1000);
+        canUpgrade = true;
+    }
     private void UpgradeActivation(PricesNode.Upgrades upgrade)
     {
         switch (upgrade)
@@ -107,7 +114,7 @@ public class Hub_Manager : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("Player"))
+        if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("Player") && canUpgrade)
         {
             UpgradeSwitch();
 
