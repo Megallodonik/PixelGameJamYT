@@ -6,14 +6,44 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public void StartGame()
+    [SerializeField] Tutorial[] tutorial;
+    [SerializeField] GameObject TutorialBorder;
+    [SerializeField] GameObject StartButton;
+    private int currentTutorialNode = 0;
+    public void StartTutorial()
     {
-        SceneManager.LoadScene("Main");
+        for (int i = 0; i < tutorial[currentTutorialNode].nodeGameObjects.Count; i++)
+        {
+            tutorial[currentTutorialNode].nodeGameObjects[i].SetActive(true);
+        }
+        StartButton.SetActive(false);
+        TutorialBorder.SetActive(true);    
     }
+
     void Start()
     {
         
+    }
+
+    public void ChangeNode()
+    {
+        if (tutorial[currentTutorialNode].StartGame)
+        {
+            SceneManager.LoadScene("Main");
+        }
+        else
+        {
+            for (int i = 0; i < tutorial[currentTutorialNode].nodeGameObjects.Count; i++)
+            {
+                tutorial[currentTutorialNode].nodeGameObjects[i].SetActive(false);
+            }
+            currentTutorialNode++;
+            for (int i = 0; i < tutorial[currentTutorialNode].nodeGameObjects.Count; i++)
+            {
+                tutorial[currentTutorialNode].nodeGameObjects[i].SetActive(true);
+            }
+            
+        }
     }
 
     // Update is called once per frame
@@ -21,4 +51,11 @@ public class MenuController : MonoBehaviour
     {
         
     }
+}
+
+[System.Serializable]
+public class Tutorial
+{
+    public List<GameObject> nodeGameObjects;
+    public bool StartGame;
 }
