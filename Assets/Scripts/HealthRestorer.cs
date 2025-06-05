@@ -7,6 +7,10 @@ using UnityEngine.Rendering.Universal;
 
 public class HealthRestorer : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip buttonPressed;
+
+
     [SerializeField] GameObject Player;
     private Player_Health player_Health;
     private bool _restoreHealth = false;
@@ -64,6 +68,8 @@ public class HealthRestorer : MonoBehaviour
     {
         while (_restoreHealth)
         {
+            audioSource.clip = buttonPressed;
+            audioSource.Play();
             player_Health.PlayerHpChange(RestorationValue, Player_Health.HP_ChangeTypes.restoration);
             await UniTask.Delay(500); // 0.5sec
         }

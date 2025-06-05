@@ -9,9 +9,14 @@ public class MenuController : MonoBehaviour
     [SerializeField] Tutorial[] tutorial;
     [SerializeField] GameObject TutorialBorder;
     [SerializeField] GameObject StartButton;
+
+    [SerializeField] AudioClip buttonPressed;
+    [SerializeField] AudioSource audioSource;
     private int currentTutorialNode = 0;
     public void StartTutorial()
     {
+        audioSource.clip = buttonPressed;
+        audioSource.Play();
         for (int i = 0; i < tutorial[currentTutorialNode].nodeGameObjects.Count; i++)
         {
             tutorial[currentTutorialNode].nodeGameObjects[i].SetActive(true);
@@ -27,6 +32,8 @@ public class MenuController : MonoBehaviour
 
     public void ChangeNode()
     {
+        audioSource.clip = buttonPressed;
+        audioSource.Play();
         if (tutorial[currentTutorialNode].StartGame)
         {
             SceneManager.LoadScene("Main");

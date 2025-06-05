@@ -12056,6 +12056,7 @@ GameObject:
   - component: {fileID: 362049428}
   - component: {fileID: 362049429}
   - component: {fileID: 362049430}
+  - component: {fileID: 362049431}
   m_Layer: 0
   m_Name: HealthRestore
   m_TagString: Untagged
@@ -12116,6 +12117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c22f51f7a6414449881f5651933272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 362049431}
+  buttonPressed: {fileID: 8300000, guid: 153f4acaa7d88344b89f3a87b3d64212, type: 3}
   Player: {fileID: 3562611996225431987}
   RestorationValue: 1
   lightMaxRadius: 4
@@ -12199,6 +12202,102 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!82 &362049431
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362049426}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &368119756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15537,118 +15636,121 @@ MonoBehaviour:
   - position: {x: -1.9657345, y: 2.631978, z: 0}
     color: {r: 0, g: 0, b: 0, a: 1}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4385, y: -2.0796, z: 0}
+  - position: {x: -2.4257, y: -2.0691, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4285, y: -2.177, z: 0}
+  - position: {x: -2.4152, y: -2.1664, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.3997, y: -2.2705, z: 0}
+  - position: {x: -2.386, y: -2.2598, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.3491, y: -2.3626, z: 0}
+  - position: {x: -2.3363, y: -2.3497, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.4704, y: -5.0661, z: 0}
+  - position: {x: -0.4597, y: -5.05, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.407, y: -5.1406, z: 0}
+  - position: {x: -0.3962, y: -5.1246, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.3302, y: -5.2014, z: 0}
+  - position: {x: -0.3195, y: -5.1853, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.2431, y: -5.246, z: 0}
+  - position: {x: -0.2324, y: -5.2299, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.149, y: -5.2728, z: 0}
+  - position: {x: -0.1383, y: -5.2567, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.0515, y: -5.2807, z: 0}
+  - position: {x: -0.0407, y: -5.2646, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.0458, y: -5.2695, z: 0}
+  - position: {x: 0.0565, y: -5.2534, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.1389, y: -5.2396, z: 0}
+  - position: {x: 0.1497, y: -5.2235, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.2245, y: -5.1921, z: 0}
+  - position: {x: 0.2352, y: -5.176, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.2992, y: -5.1288, z: 0}
+  - position: {x: 0.3099, y: -5.1127, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.3601, y: -5.0523, z: 0}
+  - position: {x: 0.3708, y: -5.0361, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.4049, y: -4.9653, z: 0}
+  - position: {x: 0.4156, y: -4.9492, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.432, y: -4.8712, z: 0}
+  - position: {x: 0.4427, y: -4.8551, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.4402, y: -4.7806, z: 0}
+  - position: {x: 0.4509, y: -4.7644, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.4355, y: 5.0097, z: 0}
+  - position: {x: 0.4444, y: 5.004, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.4259, y: 5.1071, z: 0}
+  - position: {x: 0.4348, y: 5.1014, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.3975, y: 5.2008, z: 0}
+  - position: {x: 0.4063, y: 5.1951, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.3514, y: 5.2871, z: 0}
+  - position: {x: 0.3602, y: 5.2814, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.2893, y: 5.3628, z: 0}
+  - position: {x: 0.2982, y: 5.357, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.2137, y: 5.4249, z: 0}
+  - position: {x: 0.2226, y: 5.4192, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.1275, y: 5.4712, z: 0}
+  - position: {x: 0.1363, y: 5.4654, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.0339, y: 5.4997, z: 0}
+  - position: {x: 0.0427, y: 5.4939, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.0635, y: 5.5095, z: 0}
+  - position: {x: -0.0547, y: 5.5037, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.1609, y: 5.5001, z: 0}
+  - position: {x: -0.1521, y: 5.4943, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.2546, y: 5.4719, z: 0}
+  - position: {x: -0.2458, y: 5.4661, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.3411, y: 5.4261, z: 0}
+  - position: {x: -0.3322, y: 5.4202, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.4169, y: 5.3642, z: 0}
+  - position: {x: -0.4081, y: 5.3583, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.4556, y: 5.321, z: 0}
+  - position: {x: -0.4447, y: 5.3177, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.3513, y: 2.9407, z: 0}
+  - position: {x: -2.3586, y: 2.9456, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4045, y: 2.8585, z: 0}
+  - position: {x: -2.4123, y: 2.8638, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4407, y: 2.7676, z: 0}
+  - position: {x: -2.4491, y: 2.7731, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4602, y: 2.6269, z: 0}
+  - position: {x: -2.4674, y: 2.6769, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  m_Triangles: 000002000100000003000200040008000800040008000900040009000a0004000a000b00040005000c0004000b000c0005000c000d0005000d000e0005000e000f0005000f001000050010001100050011001200050012001300050013001400050014001500050015001600050016001700050017001800050018001900050006001a00050019001a0006001a001b0006001b001c0006001c001d0006001d001e0006001e001f0006001f002000060020002100060021002200060022002300060023002400060024002500060025002600060026002700060007002800060027002800070028002900070029002a0007002a002b0008000400070008002b000700
+  - position: {x: -2.4695, y: 2.6269, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  m_Triangles: 000002000100000003000200040008000800040008000900040009000a0004000a000b00040005000c0004000b000c0005000c000d0005000d000e0005000e000f0005000f001000050010001100050011001200050012001300050013001400050014001500050015001600050016001700050017001800050018001900050006001a00050019001a0006001a001b0006001b001c0006001c001d0006001d001e0006001e001f0006001f002000060020002100060021002200060022002300060023002400060024002500060025002600060026002700060007002800060027002800070028002900070029002a0007002a002b0007002b002c0008000400070008002c000700
   m_LocalBounds:
-    m_Center: {x: -1.01, y: 0.11439991, z: 0}
-    m_Extent: {x: 1.4502001, y: 5.3951, z: 0}
+    m_Center: {x: -1.0093, y: 0.11954999, z: 0}
+    m_Extent: {x: 1.4602001, y: 5.3841496, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -17197,6 +17299,7 @@ GameObject:
   - component: {fileID: 1297101668}
   - component: {fileID: 1297101667}
   - component: {fileID: 1297101669}
+  - component: {fileID: 1297101670}
   m_Layer: 0
   m_Name: Chest(MainHubMenu)
   m_TagString: Untagged
@@ -17268,6 +17371,8 @@ MonoBehaviour:
   Camera: {fileID: 519420034}
   SecondScreenArrow: {fileID: 1050759021}
   ThirdScreenArrow: {fileID: 904338557}
+  audioSource: {fileID: 1297101670}
+  buttonPressed: {fileID: 8300000, guid: 75c685a0cf2c0c24d842c971adca0a5c, type: 3}
   Prices:
   - priceOre: 5
     priceMushroom: 5
@@ -17364,6 +17469,102 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!82 &1297101670
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297101665}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 495.0495
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1396761429
 GameObject:
   m_ObjectHideFlags: 0
@@ -20583,118 +20784,118 @@ MonoBehaviour:
   - position: {x: -1.9657345, y: 2.631978, z: 0}
     color: {r: 0, g: 0, b: 0, a: 1}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4322, y: -2.074, z: 0}
+  - position: {x: -2.4367, y: -2.0788, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4218, y: -2.1713, z: 0}
+  - position: {x: -2.4267, y: -2.1761, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.3926, y: -2.2647, z: 0}
+  - position: {x: -2.3978, y: -2.2696, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.3429, y: -2.3549, z: 0}
+  - position: {x: -2.3468, y: -2.3624, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.4616, y: -5.0644, z: 0}
+  - position: {x: -0.4668, y: -5.0588, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.3982, y: -5.1389, z: 0}
+  - position: {x: -0.4033, y: -5.1332, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.3215, y: -5.1997, z: 0}
+  - position: {x: -0.3265, y: -5.1938, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.2344, y: -5.2443, z: 0}
+  - position: {x: -0.2393, y: -5.2383, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.1403, y: -5.2711, z: 0}
+  - position: {x: -0.1451, y: -5.2649, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.0427, y: -5.2791, z: 0}
+  - position: {x: -0.0476, y: -5.2727, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.0545, y: -5.268, z: 0}
+  - position: {x: 0.0496, y: -5.2614, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.1477, y: -5.2381, z: 0}
+  - position: {x: 0.1428, y: -5.2313, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.2332, y: -5.1906, z: 0}
+  - position: {x: 0.2282, y: -5.1837, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.3079, y: -5.1274, z: 0}
+  - position: {x: 0.3028, y: -5.1203, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.3689, y: -5.0508, z: 0}
+  - position: {x: 0.3636, y: -5.0436, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.4138, y: -4.9639, z: 0}
+  - position: {x: 0.4083, y: -4.9565, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.4408, y: -4.8698, z: 0}
+  - position: {x: 0.4352, y: -4.8625, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.4491, y: -4.7782, z: 0}
+  - position: {x: 0.4433, y: -4.772, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.4305, y: 5.0078, z: 0}
+  - position: {x: 0.427, y: 4.9971, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.4207, y: 5.1051, z: 0}
+  - position: {x: 0.4173, y: 5.0945, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.3922, y: 5.1987, z: 0}
+  - position: {x: 0.3887, y: 5.1881, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.346, y: 5.285, z: 0}
+  - position: {x: 0.3425, y: 5.2744, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.2838, y: 5.3606, z: 0}
+  - position: {x: 0.2804, y: 5.35, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.2081, y: 5.4226, z: 0}
+  - position: {x: 0.2047, y: 5.4121, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.1218, y: 5.4687, z: 0}
+  - position: {x: 0.1184, y: 5.4582, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.0282, y: 5.4972, z: 0}
+  - position: {x: 0.0248, y: 5.4866, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.0692, y: 5.5068, z: 0}
+  - position: {x: -0.0726, y: 5.4963, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.1666, y: 5.4973, z: 0}
+  - position: {x: -0.17, y: 5.4868, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.2603, y: 5.469, z: 0}
+  - position: {x: -0.2637, y: 5.4585, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.3466, y: 5.423, z: 0}
+  - position: {x: -0.3501, y: 5.4125, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.4224, y: 5.361, z: 0}
+  - position: {x: -0.4258, y: 5.3506, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.4597, y: 5.3195, z: 0}
+  - position: {x: -0.4635, y: 5.3085, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.3631, y: 2.9441, z: 0}
+  - position: {x: -2.3496, y: 2.9492, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4165, y: 2.8621, z: 0}
+  - position: {x: -2.403, y: 2.8672, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4529, y: 2.7712, z: 0}
+  - position: {x: -2.4393, y: 2.7763, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4729, y: 2.6271, z: 0}
+  - position: {x: -2.4591, y: 2.6346, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
   m_Triangles: 000002000100000003000200040008000800040008000900040009000a0004000a000b00040005000c0004000b000c0005000c000d0005000d000e0005000e000f0005000f001000050010001100050011001200050012001300050013001400050014001500050015001600050016001700050017001800050018001900050006001a00050019001a0006001a001b0006001b001c0006001c001d0006001d001e0006001e001f0006001f002000060020002100060021002200060022002300060023002400060024002500060025002600060026002700060007002800060027002800070028002900070029002a0007002a002b0008000400070008002b000700
   m_LocalBounds:
-    m_Center: {x: -1.0119, y: 0.11385012, z: 0}
-    m_Extent: {x: 1.461, y: 5.39295, z: 0}
+    m_Center: {x: -1.0079, y: 0.111800194, z: 0}
+    m_Extent: {x: 1.4512, y: 5.3845, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -20720,6 +20921,7 @@ GameObject:
   - component: {fileID: 1966440606}
   - component: {fileID: 1966440607}
   - component: {fileID: 1966440608}
+  - component: {fileID: 1966440609}
   m_Layer: 0
   m_Name: RespawnResourses
   m_TagString: Untagged
@@ -20784,6 +20986,104 @@ MonoBehaviour:
   UI: {fileID: 804852218}
   Player: {fileID: 3562611996225431987}
   Spawner: {fileID: 1871083330}
+  audioSource: {fileID: 1966440609}
+  buttonPressed: {fileID: 8300000, guid: 75c685a0cf2c0c24d842c971adca0a5c, type: 3}
+--- !u!82 &1966440609
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966440605}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 495.0495
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1974150854 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5502692806049803878, guid: a97bbef59a35d10458d99a4287237179, type: 3}

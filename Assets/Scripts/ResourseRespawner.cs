@@ -7,8 +7,9 @@ public class ResourseRespawner : MonoBehaviour
     [SerializeField] GameObject UI;
     [SerializeField] GameObject Player;
     [SerializeField] Harvestable_Spawn Spawner;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip buttonPressed;
 
-    
     private Player_Health player_Health;
     void Start()
     {
@@ -43,6 +44,8 @@ public class ResourseRespawner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("Player"))
         {
+            audioSource.clip = buttonPressed;
+            audioSource.Play();
             respawnResourses();
 
         }

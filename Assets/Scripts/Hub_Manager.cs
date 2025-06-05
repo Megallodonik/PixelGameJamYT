@@ -17,6 +17,9 @@ public class Hub_Manager : MonoBehaviour
     [SerializeField] CameraController Camera;
     [SerializeField] GameObject SecondScreenArrow;
     [SerializeField] GameObject ThirdScreenArrow;
+
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip buttonPressed;
     private Player_Harvesting _playerHarvesting;
     private bool canUpgrade = true;
 
@@ -116,6 +119,8 @@ public class Hub_Manager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("Player") && canUpgrade)
         {
+            audioSource.clip = buttonPressed;
+            audioSource.Play();
             UpgradeSwitch();
 
         }
