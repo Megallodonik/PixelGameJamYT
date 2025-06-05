@@ -242,6 +242,15 @@ public class Player_Harvesting : MonoBehaviour
 
 
         }
+        if (Input.GetKeyUp(KeyCode.E) && (other.CompareTag("Mushroom") || other.CompareTag("Ore")))
+        {
+
+            StopHarvestDelay();
+            _currentHarvestableObject.GetComponent<Harvestable>().stopGlowing();
+
+
+
+        }
 
     }
     public void StopHarvestDelay()
