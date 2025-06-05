@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] Transform _playerPosition;
     [SerializeField] Vector3 SecondScreenCameraPosition;
+    [SerializeField] Vector3 ThirdScreenCameraPosition;
     public float CameraSpeed = 1;
     private int ScreenLength = 20;
     private bool delayEnd = true;
@@ -20,8 +21,18 @@ public class CameraController : MonoBehaviour
         
     }
 
-
-    public async UniTask CameraMove()
+    public void CameraMove(int upgrade)
+    {
+        if (upgrade == 1)
+        {
+            CameraMove_firstUpgrade();
+        }
+        else
+        {
+            CameraMove_secondUpgrade();
+        }
+    }
+    public async UniTask CameraMove_firstUpgrade()
     {
         Debug.Log(delayEnd);
         
@@ -30,19 +41,34 @@ public class CameraController : MonoBehaviour
         await UniTask.WaitForFixedUpdate();
         if (!delayEnd)
         {
-            CameraMove();
+            CameraMove_firstUpgrade();
         }
         
 
         
     }
+    public async UniTask CameraMove_secondUpgrade()
+    {
+        Debug.Log(delayEnd);
 
-    public async UniTask SecondScreenCameraMove()
+        transform.position = Vector3.Lerp(transform.position, ThirdScreenCameraPosition, CameraSpeed * Time.deltaTime);
+
+        await UniTask.WaitForFixedUpdate();
+        if (!delayEnd)
+        {
+            CameraMove_secondUpgrade();
+        }
+
+
+
+    }
+
+    public async UniTask SecondScreenCameraMove(int upgrade)
     {
         Debug.Log("secondscreencameramove");
         delayEnd = false;
         isCameraMoving = true;
-        CameraMove();
+        CameraMove(upgrade);
         
 
         await UniTask.Delay(5000);

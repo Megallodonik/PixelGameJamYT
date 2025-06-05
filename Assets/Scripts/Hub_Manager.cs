@@ -11,9 +11,12 @@ public class Hub_Manager : MonoBehaviour
     [SerializeField] TMP_Text MushroomPriceText;
     [SerializeField] TMP_Text DescriptionText;
     [SerializeField] GameObject HealthRestoration;
+
     [SerializeField] GameObject SecondScreenWall;
+    [SerializeField] GameObject ThirdScreenWall;
     [SerializeField] CameraController Camera;
     [SerializeField] GameObject SecondScreenArrow;
+    [SerializeField] GameObject ThirdScreenArrow;
     private Player_Harvesting _playerHarvesting;
 
     private int currentPriceNode = 0;
@@ -67,13 +70,24 @@ public class Hub_Manager : MonoBehaviour
             case PricesNode.Upgrades.SecondScreen:
                 _secondScreenUpgrade();
                 break;
+            case PricesNode.Upgrades.ThirdScreen:
+                _ThirdScreenUpgrade();
+                break;
         }
 
+    }
+    private async UniTask _ThirdScreenUpgrade()
+    {
+
+        Camera.SecondScreenCameraMove(2);
+        await UniTask.Delay(3000);
+        ThirdScreenWall.SetActive(false);
+        ThirdScreenArrow.SetActive(true);
     }
     private async UniTask _secondScreenUpgrade()
     {
         
-        Camera.SecondScreenCameraMove();
+        Camera.SecondScreenCameraMove(1);
         await UniTask.Delay(2000);
         SecondScreenWall.SetActive(false);
         SecondScreenArrow.SetActive(true);
@@ -118,8 +132,8 @@ public class PricesNode
     public string UpgradeDescription;
     public enum Upgrades
     {
-        HealthRestoration = 0,
-        SecondScreen = 1,
-        SomeThirdUpgrade = 2,
+        SecondScreen = 0,
+        HealthRestoration = 1,
+        ThirdScreen = 2,
     }
 }
